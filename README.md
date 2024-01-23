@@ -1,27 +1,75 @@
-# Loginpage
+[![OTPless](https://d1j61bbz9a40n6.cloudfront.net/website/home/v4/logo/white_logo.svg)](https://otpless.com/platforms/angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+# Angular Demo
 
-## Development server
+## Steps to add OTPless SDK to your Angular App
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Add OTPLESS Sign in**
 
-## Code scaffolding
+> Add the following code to your sign up/ sign in page where you want to embed your sign in functionality.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```index.html
+<div id="otpless-login-page"></div>
+<script type="text/javascript" src="https://otpless.com/auth.js" cid="YOUR_CID_HERE"></script>
+// Replace YOUR_CID_HERE with your cid
+```
 
-## Build
+2. **Retrieve User's Information**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> Implement the following function to retrive the **user data** upon successful authentication of the user.
 
-## Running unit tests
+```component.ts
+constructor() {
+    //@ts-ignore
+    window.otpless = (otplessUser) => {
+     alert(JSON.stringify(otplessUser));
+    };
+   }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Usage
+
+> **Prequisite** [NodeJS](https://nodejs.org/en)
+
+- Install Packages
+
+    ```bash
+    npm install
+    ```
+
+- Add `cid` to the script by replacing [YOUR_CID_HERE](./src/index.html#L14) with your cid from [OTPless docs](https://otpless.com/platforms/angular#angular_STEP_1)
+
+- Run the demo
+
+    ```bash
+   ng serve
+
+    ```
+
+- Open [localhost:4200]((http://localhost:4200/)) in your browser
+- Switch branches to check out available options to integrate *OTPless* in your project
+
+
+
+> Received User Data Format
+
+```js
+// otpless user Format
+{
+    "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "timestamp": "YYYY-MM-DD HH:MM:SS",
+    "timezone": "+XX:XX",
+    "mobile": {
+        "name": "User Name",
+        "number": "User Mobile Number"
+    },
+    "email": {
+        "name": "User Name ",
+        "email": "User Email"
+    }
+}
+```
