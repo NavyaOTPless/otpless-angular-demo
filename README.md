@@ -9,7 +9,7 @@
 > Add the following code to your sign up/ sign in page where you want to embed your sign in functionality.
 
 ```index.html
-<div id="otpless-login-page"></div>
+
 <script type="text/javascript" src="https://otpless.com/auth.js" cid="YOUR_CID_HERE"></script>
 // Replace YOUR_CID_HERE with your cid
 ```
