@@ -9,7 +9,8 @@
 > Add the following code to your sign up/ sign in page where you want to embed your sign in functionality.
 
 ```index.html
-<div id="otpless-login-page"></div>
+<div id="otpless" custom=true>OTPLESS</div>
+
 <script type="text/javascript" src="https://otpless.com/auth.js" cid="YOUR_CID_HERE"></script>
 // Replace YOUR_CID_HERE with your cid
 ```
@@ -19,12 +20,33 @@
 > Implement the following function to retrive the **user data** upon successful authentication of the user.
 
 ```component.ts
-constructor() {
-    //@ts-ignore
-    window.otpless = (otplessUser) => {
-     alert(JSON.stringify(otplessUser));
+export class AppComponent {
+  title = 'FloaterWithButton';
+
+  constructor() {
+    const script = document.createElement('script');
+    script.src = 'https://otpless.com/auth.js';
+    script.id = 'otplessScriptId'
+    document.body.appendChild(script);
+
+
+    const otpless = (otplessUser: any) => {
+      alert(JSON.stringify(otplessUser))
+      // Additional code to handle otplessUser
     };
-   }
+    (window as any).otpless = otpless;
+  }
+  ngOnDestroy(): void {
+    const otplessId = document.getElementById('otplessScriptId')
+    if (otplessId) {
+      document.body.removeChild(otplessId);
+    }
+  }
+
+}
+
+
+
 
 ```
 
