@@ -11,8 +11,8 @@
 ```index.html
 <div id="otpless" custom=true>OTPLESS</div>
 
-<script type="text/javascript" src="https://otpless.com/auth.js" cid="YOUR_CID_HERE"></script>
-// Replace YOUR_CID_HERE with your cid
+<script id="otpless-sdk" type="text/javascript" src="https://otpless.com/v2/auth.js" data-appid="YOUR_APP_ID"></script>
+// Replace YOUR_APP_ID HERE with your appid
 ```
 
 2. **Retrieve User's Information**
@@ -63,7 +63,7 @@ export class AppComponent {
     npm install
     ```
 
-- Add `cid` to the script by replacing [YOUR_CID_HERE](./src/index.html#L14) with your cid from [OTPless docs](https://otpless.com/platforms/angular#angular_STEP_1)
+- Add `cid` to the script by replacing [YOUR_APP_ID HERE](./src/index.html#L14) with your appid from [OTPless docs](https://otpless.com/platforms/angular#angular_STEP_1)
 
 - Run the demo
 
